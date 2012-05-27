@@ -10,6 +10,8 @@ gem 'pg'
 gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails"
 gem 'execjs'
 gem 'therubyracer'
+
+	gem 'jquery-ui-rails' 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
