@@ -40,7 +40,7 @@
 		<td>
 			<table class="table table-striped">
 				<tr height="40px;">
-					<td width="100px;">Name</td> 
+					<td width="100px;"><b>Name</b></td> 
 					<td>
 						<%=best_in_place @profile, :name, :path => user_profile_path, :nil => "add content!",:activator => "#Name"%>
 					</td>
@@ -49,7 +49,7 @@
 					</td>
 				</tr>
 				<tr height="40px;">
-					<td>Email</td>
+					<td><b>Email</b></td>
 					<td>
 						<%=best_in_place @profile, :email, :path => user_profile_path,:nil => "add content!",:activator => "#email"%>
 					</td>
@@ -58,20 +58,23 @@
 					</td>
 				</tr>
 				<tr height="40px;">
-					<td>Phone</td>
+					<td><b>Phone</b></td>
 					<td>
 						<%=best_in_place @profile, :phone, :path => user_profile_path,:nil => "Add Your phone Number!",:activator => "#phone"%>
 					</td>
 					<td>
 						<a id="phone" href="#">(edit)</a>
 					</td>
-				</tr>
+				</tr>				
+				</table>
+				<!-payment-!>
+				<div class="filterHeader" style="width:700px;padding-left:0px;text-align:center;">
+					<b>Payment Details</b>
+				</div>
+				<table class="table table-striped">
 				<tr height="40px;">
-					<td colspan="2"><b>Payment Details</b></td><td></td>
-				</tr>
-				<tr height="40px;">
-					<td>Accept Paypal</td>
-					<td>
+					<td width="100px;"><b>Accept Paypal</b></td>
+					<td width="446px;">
 						<%=best_in_place @profile, :accept_paypal, :path => user_profile_path, type: :checkbox, collection: %w[No Yes],:nil => "Change",:activator => "#paypal"%>
 					</td>
 					<td>
@@ -79,7 +82,7 @@
 					</td>
 				</tr>
 					<tr height="40px;">
-					<td> Paypal Email<a href="#" rel="popover" data-content="If you agree to recieve money through paypal the money you recieved from your carpooling buddy will be transfered to this email." data-original-title="Paypal Money transfer"><i class="icon-question-sign"></i></a></td>
+					<td> <b>Paypal Email</b><a href="#" rel="popover" data-content="If you agree to recieve money through paypal the money you recieved from your carpooling buddy will be transfered to this email." data-original-title="Paypal Money transfer"><i class="icon-question-sign"></i></a></td>
 					<td>
 						<%=best_in_place @profile, :paypal_email, :path => user_profile_path, :nil => "Change",:activator => "#pEmail"%>
 					</td>
@@ -88,13 +91,16 @@
 					</td>
 				</tr>
 
-				<tr height="40px;">
-					<td colspan="2"><b>About me</b></td><td></td>
-				</tr>
+			</table>
+			<!-About ME-!>
+			<div class="filterHeader" style="width:700px;padding-left:0px;text-align:center;">
+				<b>About me</b>
+			</div>
+			<table class="table table-striped">
 				
 				<tr height="40px;">
-					<td width="100px;">Music</td> 
-					<td>
+					<td width="100px;"><b>Music</b></td> 
+					<td width="446px;">
 						<%=best_in_place @profile, :music, :path => user_profile_path, type: :textarea,:nil => "Click me to add content!",:activator => "#Music"%>
 					</td>
 					<td>
@@ -103,7 +109,7 @@
 				</tr>
 				
 				<tr height="40px;">
-					<td width="100px;">Interests</td>
+					<td width="100px;"><b>Interests</b></td>
 					<td>
 						<%=best_in_place @profile, :interest, :path => user_profile_path, type: :textarea, :nil => "Add content!",:activator => "#Interest"%>
 					</td>
@@ -114,7 +120,7 @@
 				
 				<tr height="40px;">
 			
-					<td>Work</td>
+					<td><b>Work</b></td>
 					<td>
 						<%=best_in_place @profile, :work, :path => user_profile_path, type: :textarea,:nil => "Click me to add content!",:activator => "#Work"%>
 					</td>
@@ -124,7 +130,7 @@
 				</tr>
 				<tr height="40px;">
 			
-					<td>Home Town</td>
+					<td><b>Home Town</b></td>
 					<td>
 						<%=best_in_place @profile, :hometown, :path => user_profile_path,:nil => "Click me to add content!",:activator => "#Home"%>
 					</td>
@@ -134,7 +140,7 @@
 				</tr>
 				<tr height="40px;">
 			
-					<td>Current Location</td>
+					<td><b>Current Location</b></td>
 					<td>
 						<%=best_in_place @profile, :current_location, :path => user_profile_path,:nil => "Add content!",:activator => "#Curr"%>
 					</td>
@@ -143,7 +149,7 @@
 					</td>
 				</tr>
 				<tr height="40px;">
-					<td width="100px;">Prefer Smoking?</td>
+					<td width="100px;"><b>Prefer Smoking?</b></td>
 					<td>
 						<%= best_in_place @profile, :smoking, :path => user_profile_path, type: :checkbox, collection: %w[No Yes],:activator => "#smoking"%>
 					</td>
@@ -153,8 +159,8 @@
 				</tr>
 				
 				<tr height="40px;">
-					<td>Education</td>
-					<td>
+					<td><b>Education</b></td>
+					<td colspan="2">
 							<% @profile.user.educations.each do |education|%>
 							Institute: <%=best_in_place education,:name, :path => user_profile_path%>
 							<br>

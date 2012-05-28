@@ -57,7 +57,7 @@ Search Results
   	<tbody>
 			<!- For Show all->
   		<%if params[:is_driving].nil?%>
-				<%  Post.where(id: @searchresults).order("startdate").each do |post| %>
+				<%  Post.where(id: @searchresults).where(closed: false).order("startdate").each do |post| %>
 				<a>
 					<tr height="80px;">
         		<td width="80px;">
@@ -72,7 +72,7 @@ Search Results
 				  		<span class="st_tag"><a><%= stop.city %></a></span>
 						<%end%> 
 							</div>
-							<br>Departs in <%=  time_ago_in_words(post.startdate) %> (<%= post.startdate.strftime "%A, %B %d,%Y"%>)
+							Departs in <%=  time_ago_in_words(post.startdate) %> (<%= post.startdate.strftime "%A, %B %d,%Y"%>)
 					<%= "at "+ post.time if post.time != "Anytime" %>
 						<br>
 						<%if current_user and post.user != current_user%>
@@ -114,7 +114,7 @@ Search Results
 					
 			
   	<%end%>
-  	<%if !Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).order("startdate").empty?%>
+  	<%if !Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).where(closed: false).order("startdate").empty?%>
   	<!-Rest of the results->
 		</tbody>
 		</table>
@@ -123,7 +123,7 @@ Search Results
 			Rest of the Search Results
 		</div>
 		<table class="table table-striped" style="width:700px; float:left;">
-  		<%  Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).each do |post| %>
+  		<%  Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).where(closed: false).each do |post| %>
 
 				<a>
 					<tr height="80px;">
@@ -139,7 +139,7 @@ Search Results
 				  		<span class="st_tag"><a><%= stop.city %></a></span>
 						<%end%> 
 							</div>
-							<br>Departs in 
+							Departs in 
 							<%=  time_ago_in_words(post.startdate) %>  (<%= post.startdate.strftime "%A, %B %d,%Y"%>)
 							<%= "at"+post.time if post.time !="Anytime" %>
 					
@@ -183,7 +183,7 @@ Search Results
  		<%end%>
   	<%else%>
 <!-For is_driving-!>
-   <% Post.where(id: @searchresults).where(is_driving: params[:is_driving]).order("startdate").each do |post| %>
+   <% Post.where(id: @searchresults).where(is_driving: params[:is_driving]).where(closed: false).order("startdate").each do |post| %>
    	<a>
 			<tr height="80px;">
       	<td width="80px;">
@@ -191,13 +191,13 @@ Search Results
 				</td>
         <td>
 					<div style="font-size:20px;margin-top:8px;">
-						<%= link_to post.start.city, post_path(post) %> <%= image_tag "arrow_right.png" %> <%= link_to post.finish.city, post_path(post) %>  
+						<%= link_to post.start.city, post_path(post) %> <%= image_tag "arrow_right.png" %> <%= link_to post.finish.city, post_path(post) %>
+						<br>  
+						<% post.stops.each do |stop|  %>
+					  	<span class="st_tag"><a><%= stop.city %></a></span>
+						<%end%>
 					</div>
-					<br>
-					<% post.stops.each do |stop|  %>
-				  		<span class="st_tag"><a><%= stop.city %></a></span>
-						<%end%> 
-					<br>Departs in
+					Departs in
 					<%= time_ago_in_words(post.startdate) %> (<%= post.startdate.strftime "%A, %B %d,%Y"%>)
 					<%= "at"+post.time if post.time !="Anytime" %>
 					<br>
@@ -239,7 +239,7 @@ Search Results
 		</tbody> 
  			
   	<%end%>
-  	<%if !Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).where(is_driving: params[:is_driving]).order("startdate").empty?%>
+  	<%if !Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).where(closed: false).where(is_driving: params[:is_driving]).order("startdate").empty?%>
   	<!-Rest of the results-!>
 	</tbody>
 	</table>
@@ -248,7 +248,7 @@ Search Results
 		Rest of the Search Results
 	</div>
 	<table class="table table-striped" style="width:700px; float:left;">
-  		<%  Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).where(is_driving: params[:is_driving]).each do |post| %>
+  		<%  Post.where('id NOT IN (?) and startdate > ?', @searchresults, Date.today).where(closed: false).where(is_driving: params[:is_driving]).each do |post| %>
 
 				<a>
 					<tr height="80px;">
@@ -265,7 +265,7 @@ Search Results
 				  		<span class="st_tag"><a><%= stop.city %></a></span>
 						<%end%> 
 							</div>
-							<br>Departs in 
+							Departs in 
 							<%=  time_ago_in_words(post.startdate) %>(<%= post.startdate.strftime "%A, %B %d,%Y"%>)
 							<%= "at"+post.time if post.time !="Anytime" %>
 						<br>

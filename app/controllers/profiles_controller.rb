@@ -84,7 +84,7 @@ end
 						@booking= Booking.find(params[:booking])
 						@post= @booking.post
 		@booking.update_attributes(rejected: false, accepted: true)
-		@post.update_attributes(close: true)
+		@post.update_attributes(closed: true)
 		redirect_to :back
 		end
 		def review_create
