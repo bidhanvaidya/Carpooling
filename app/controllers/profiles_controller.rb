@@ -24,7 +24,8 @@ end
 def reply_message
 body=params[:body]
     receipt= Receipt.find(params[:receipt])
-current_user.profile.reply_to_sender(receipt, body)
+    @user= User.find(params[:user_id]).profile
+@user.profile.reply_to_sender(receipt, body)
  redirect_to user_profiles_path(current_user)
 end
 def trash
