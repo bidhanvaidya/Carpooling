@@ -1,6 +1,6 @@
 <div id="midcontainer">
 	<pre>Your Rides</pre>
-
+<%= will_paginate @posts, class:"pager"%>
 <table class="table table-striped" style="width:700px;">
 	<%if @posts.empty?%>
 	<tbody>

@@ -259,6 +259,7 @@ function showonlyone(thechosenone) {
 		</table>
 		<%else%>
 		<table class="table table-striped" style="width:700px;">
+		<%= will_paginate @posts, class:"pager"%>
 		  <tbody>
 		  <% @posts.each do |ride|%>
 		  	<a>
