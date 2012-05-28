@@ -132,7 +132,7 @@ end
 		def facebook
 		  
 			if current_user
-				@graph = Koala::Facebook::API.new(current_user.token)
+				@graph = Koala::Facebook::GraphAPI.new(current_user.token)
 			end
 		end
 		def editing
