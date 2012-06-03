@@ -52,7 +52,7 @@ end
 	match "/auth/:facebook/callback" => "sessions#create"
 	match "/signout" => "sessions#destroy", :as => :signout
 	
-	match "/googleab837e83b3783fb6" => "info/googleab837e83b3783fb6"
+	match "/googleab837e83b3783fb6" => "info#googleab837e83b3783fb6"
   # Sample resource route with options:
   #   resources :products do
   #     member do
