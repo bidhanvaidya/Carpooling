@@ -1,7 +1,5 @@
 Ozride::Application.routes.draw do
   get "info/jobs"
-  get "info/googleab837e83b3783fb6"
-
   get "info/faq"
 
   get "info/privacy"
@@ -34,7 +32,8 @@ end
       	get 'make_booking'
       end
   end
-
+match '/googleab837e83b3783fb6.html', 
+      :to => proc { |env| [200, {}, ["google-site-verification: googleab837e83b3783fb6.html"]] }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -52,7 +51,6 @@ end
 	match "/auth/:facebook/callback" => "sessions#create"
 	match "/signout" => "sessions#destroy", :as => :signout
 	
-	match "/googleab837e83b3783fb6" => "info#googleab837e83b3783fb6"
   # Sample resource route with options:
   #   resources :products do
   #     member do
