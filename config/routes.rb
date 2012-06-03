@@ -1,5 +1,6 @@
 Ozride::Application.routes.draw do
   get "info/jobs"
+  get "info/googleab837e83b3783fb6"
 
   get "info/faq"
 
@@ -50,6 +51,8 @@ end
 	resources :homes
 	match "/auth/:facebook/callback" => "sessions#create"
 	match "/signout" => "sessions#destroy", :as => :signout
+	
+	match "googleab837e83b3783fb6" => "info/googleab837e83b3783fb6"
   # Sample resource route with options:
   #   resources :products do
   #     member do
