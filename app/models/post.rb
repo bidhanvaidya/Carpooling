@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :startdate, :time, :user_id, :startLocation, :note, :contribution, :closed, :is_driving,:start_attributes, :finish_attributes, :stops_attributes
+  attr_accessible :startdate, :time, :user_id, :startLocation, :note, :closed, :contribution, :is_driving,:start_attributes, :finish_attributes, :stops_attributes
   after_create :save_location
  belongs_to :user
   has_one :finish, :dependent => :destroy
