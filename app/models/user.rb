@@ -6,15 +6,26 @@ has_many :posts
 has_many :bookings
 has_many :reviews
 has_many :educations
-def self.create_with_omniauth(auth)
-  create! do |user|
-    user.provider = auth["provider"]
-    user.uid = auth["uid"]
-    user.token = auth["credentials"]["token"]
-    user.name = auth["info"]["name"]
+#def self.create_with_omniauth(auth)
+ # create! do |user|
+  #  user.provider = auth["provider"]
+   # user.uid = auth["uid"]
+    #user.token = auth["credentials"]["token"]
+    #user.name = auth["info"]["name"]
     
+ # end
+  
+  #end
+    def self.from_omniauth(auth)
+  where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+    user.provider = auth.provider
+    user.uid = auth.uid
+    user.name = auth.info.name
+    user.token = auth.credentials.token
+    #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user.save!
   end
-  end
+  
 def save_friends
 	user=FbGraph::User.me(self.token).fetch
 	Profile.create(:name=> user.name,
