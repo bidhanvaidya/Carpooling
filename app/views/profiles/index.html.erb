@@ -39,7 +39,7 @@ function showonlyone(thechosenone) {
 <div style="width:230px;float:left;">
 	<!-profile image and data-!>
 	<div class="circle-image-one-fourth" style="margin-left:0px;">
-		<img class="aligncenter" src="http://graph.facebook.com/<%=current_user.uid%>/picture?type=large" >
+		<img class="aligncenter" src="http://graph.facebook.com/<%=@profile.user.uid%>/picture?type=large" >
 		<table>
 			<tr height="21px;">
 				<td><%= image_tag "house.png" %></td>
