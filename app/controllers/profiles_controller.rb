@@ -5,7 +5,7 @@ def index
   @user= User.find(params[:user_id])
  @profile= @user.profile
  @posts= @user.posts.paginate(:page => params[:page], :per_page => 3)
-  @page = FbGraph::User.me(@user.token).fetch
+ # @page = FbGraph::User.me(@user.token).fetch
   if current_user == @user
     @inbox=@profile.receipts.inbox.where(trashed: false)
     @sentbox=  @profile.receipts.sentbox.where(trashed: false) 
