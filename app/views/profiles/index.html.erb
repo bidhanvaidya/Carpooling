@@ -39,7 +39,7 @@ function showonlyone(thechosenone) {
 <div style="width:230px;float:left;">
 	<!-profile image and data-!>
 	<div class="circle-image-one-fourth" style="margin-left:0px;">
-		<img class="aligncenter" style="width:188px;" src=<%= photo=@page.picture + "&type=large"%>>
+		<img class="aligncenter" src="http://graph.facebook.com/<%=current_user.uid%>/picture?type=large" >
 		<table>
 			<tr height="21px;">
 				<td><%= image_tag "house.png" %></td>
@@ -104,7 +104,7 @@ function showonlyone(thechosenone) {
 											<h3>Reply</h3>
 										</div>
 										<div class = "modal-body">
-											<%= text_area_tag :body, params[:body], class:"input-xxlarge", placeholder: "Message", rows:"7",  %><br> </p>
+											<%= text_area_tag :body, params[:body], class:"input-xxlarge", placeholder: "Message", rows:"7"  %><br> </p>
 										</div>
 										<div class="modal-footer">
 											<%= link_to 'Move To Trash', trash_user_profiles_path(@profile, :receipt=> receipt), :method => 'get', :confirm => 'Are you sure?', :class => 'btn btn-danger'%>
@@ -159,7 +159,7 @@ function showonlyone(thechosenone) {
 			</div>
 			<div class="modal-body">
   			<p><%=form_tag send_message_user_profiles_path(@profile), method: :get do %>
-       	<%= text_area_tag :body, params[:body], class:"input-xxlarge", placeholder: "Message", rows:"7",  %><br> </p>
+       	<%= text_area_tag :body, params[:body], class:"input-xxlarge", placeholder: "Message", rows:"7" %><br> </p>
       	<div class="modal-footer">
         	<a href="#" class="btn", data-dismiss="modal">Close</a>
         	<%= submit_tag "Send", :name => nil, class: "btn" %>
@@ -313,7 +313,7 @@ function showonlyone(thechosenone) {
 					<%=offer.post.finish.city%> by
 					<%=offer.user.name%>
 					<%if offer.accepted?%>
-						<%=link_to "Reject Offer", reject_user_profiles_path(:booking=>offer), class: "btn btn-fail", :confirm => "Are you sure you want to reject this booking", %>
+						<%=link_to "Reject Offer", reject_user_profiles_path(:booking=>offer), class: "btn btn-fail", :confirm => "Are you sure you want to reject this booking" %>
 					<%else%>
 						<%=link_to "Accept Offer", accept_user_profiles_path(:booking=>offer), class: "btn", :confirm => "Are you sure you want to accept this booking"%>
 						<%=link_to "Accept Offer And Close the ride", accept_and_close_user_profiles_path(:booking=>offer), class: "btn", :confirm => "Are you sure you want to accept this booking and close the ride"%>

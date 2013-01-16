@@ -26,6 +26,8 @@ has_many :educations
     user.save!
   end
   
+  end
+  
 def save_friends
 	user=FbGraph::User.me(self.token).fetch
 	Profile.create(:name=> user.name,
